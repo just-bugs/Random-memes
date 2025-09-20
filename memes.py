@@ -49,7 +49,7 @@ if st.button("Generate Meme! 😂"):
         st.image(meme_image, use_container_width=True)
         st.success("Here's your meme! Enjoy! 😎")
     else:
-        st.error("No memes found in your folder. 😢")
+        st.error("No memes found in your folder. ")
 
 # --- Footer ---
 st.markdown("Made with ❤️ for meme lovers!")
