@@ -53,4 +53,4 @@ if st.button("Generate Meme! 😂"):
 
 # --- Footer ---
 st.markdown("Made with ❤️ for meme lovers!")
-st.markdown("Created by [Kweku Dzata](https://www.instagram.com/kwekudzata/)")
+st.markdown("Created by [Kweku Dzata](https://github.com/just-bugs)")
