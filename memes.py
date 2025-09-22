@@ -10,7 +10,7 @@ st.set_page_config(
     layout="centered",
 )
 
-# --- CSS for funny UI ---
+# --- CSS for UI ---
 st.markdown("""
 <style>
     .main {
