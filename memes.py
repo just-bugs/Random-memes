@@ -39,7 +39,7 @@ st.subheader("Press the button to get a random meme!")
 
 # --- Folder with memes ---
 MEME_FOLDER = "./memes"  # Replace with your folder path
-meme_files = [f for f in os.listdir(MEME_FOLDER) if f.endswith((".png", ".jpg", ".jpeg"))]
+meme_files = [f for f in os.listdir(MEME_FOLDER) if f.endswith((".PNG", ".jpg", ".jpeg"))]
 
 # --- Button to generate meme ---
 if st.button("Generate Meme! 😂"):
