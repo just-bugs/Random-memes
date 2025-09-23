@@ -38,10 +38,20 @@ MEME_FOLDER = "./memes"
 os.makedirs(MEME_FOLDER, exist_ok=True)
 
 # --- Sidebar navigation ---
-page = st.sidebar.radio("📂 Navigation", ["🎉 Meme Generator", "📤 Upload Meme"])
+pages = {
+    "generator": "🎉 Meme Generator",
+    "upload": "📤 Upload Meme"
+}
+choice = st.sidebar.radio("📂 Navigation", list(pages.values()))
+
+# --- Resolve choice back to key ---
+if choice == pages["generator"]:
+    page = "generator"
+elif choice == pages["upload"]:
+    page = "upload"
 
 # --- Meme Generator Page ---
-if page == "Meme Generator":
+if page == "generator":
     st.title("Random Meme Generator 😂")
     st.subheader("Press the button to get a random meme!")
 
@@ -60,7 +70,7 @@ if page == "Meme Generator":
     st.markdown("Created by [Kweku Dzata](https://github.com/just-bugs)")
 
 # --- Upload Meme Page ---
-elif page == "Upload Meme":
+elif page == "upload":
     st.title("Upload Your Meme 🤩")
     st.subheader("Contribute to the collection!")
 
