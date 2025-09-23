@@ -33,24 +33,41 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# --- Title ---
-st.title("Random Meme Generator 😂")
-st.subheader("Press the button to get a random meme!")
-
 # --- Folder with memes ---
-MEME_FOLDER = "./memes"  # Replace with your folder path
-meme_files = [f for f in os.listdir(MEME_FOLDER) if f.endswith((".PNG", ".jpg", ".jpeg"))]
+MEME_FOLDER = "./memes"
+os.makedirs(MEME_FOLDER, exist_ok=True)
 
-# --- Button to generate meme ---
-if st.button("Generate Meme! 😂"):
-    if meme_files:
-        meme_path = os.path.join(MEME_FOLDER, random.choice(meme_files))
-        meme_image = Image.open(meme_path)
-        st.image(meme_image, use_container_width=True)
-        st.success("Here's your meme! Enjoy! 😎")
-    else:
-        st.error("No memes found in your folder.")
+# --- Sidebar navigation ---
+page = st.sidebar.radio("📂 Navigation", ["🎉 Meme Generator", "📤 Upload Meme"])
 
-# --- Footer ---
-st.markdown("Made with ❤️ for meme lovers!")
-st.markdown("Created by [Kweku Dzata](https://github.com/just-bugs)")
+# --- Meme Generator Page ---
+if page == "🎉 Meme Generator":
+    st.title("Random Meme Generator 😂")
+    st.subheader("Press the button to get a random meme!")
+
+    meme_files = [f for f in os.listdir(MEME_FOLDER) if f.lower().endswith((".png", ".jpg", ".jpeg"))]
+
+    if st.button("Generate Meme! 😂"):
+        if meme_files:
+            meme_path = os.path.join(MEME_FOLDER, random.choice(meme_files))
+            meme_image = Image.open(meme_path)
+            st.image(meme_image, use_container_width=True)
+            st.success("Here's your meme! Enjoy! 😎")
+        else:
+            st.error("No memes found in your folder.")
+
+    st.markdown("Made with ❤️ for meme lovers!")
+    st.markdown("Created by [Kweku Dzata](https://github.com/just-bugs)")
+
+# --- Upload Meme Page ---
+elif page == "📤 Upload Meme":
+    st.title("Upload Your Meme 🤩")
+    st.subheader("Contribute to the collection!")
+
+    uploaded_file = st.file_uploader("Choose a meme image", type=["png", "jpg", "jpeg"])
+
+    if uploaded_file is not None:
+        save_path = os.path.join(MEME_FOLDER, uploaded_file.name)
+        with open(save_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+        st.success(f"✅ Meme '{uploaded_file.name}' uploaded successfully!")
