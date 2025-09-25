@@ -62,7 +62,7 @@ if page == "generator":
             meme_path = os.path.join(MEME_FOLDER, random.choice(meme_files))
             meme_image = Image.open(meme_path)
             st.image(meme_image, use_container_width=True)
-            st.success("Here's your meme! Enjoy! 😎")
+            st.success("Here's your meme! Enjoy! ")
         else:
             st.error("No memes found in your folder.")
 
