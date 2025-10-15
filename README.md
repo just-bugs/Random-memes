@@ -17,8 +17,8 @@ A fun and simple **Python project** that generate random memes.
 ##  Tech Stack
 
 - **Python 3.x**   
-- **Streamlit **
-- **CSS **
+- **Streamlit**
+- **CSS**
 
 ---
 
